@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kinetic: Text Animation Studio</title>
+<meta name="description" content="Type anything and turn it into animated text. Bounce, spin, drop, dissolve, type out, glitch or follow a path, with sound and video export.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=Bricolage+Grotesque:wght@600;800&family=DM+Serif+Display&family=Fraunces:wght@900&family=Pacifico&family=Playfair+Display:wght@800&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top"><div class="wrap bar"><a class="brand" href="#top">Kinetic</a><nav aria-label="Sections"><a href="#studio">Studio</a><a href="#presets">Presets</a><a href="#features">Features</a></nav><a class="btn pri" href="#studio">Open the studio</a></div></header>
+<section class="hero wrap" id="top"><h1 id="heroTitle">Give your words a little motion.</h1><div class="hero-r"><p>Type anything, choose a motion, and record it as a video. Bounce, spin, drop, dissolve, type out, glitch, or send letters along a path, all with sound.</p><div class="row2"><a class="btn pri" href="#studio">Start animating</a><a class="btn" href="#presets">Browse presets</a></div></div></section>
+<section id="studio" class="wrap studio"><div class="left"><div id="stage"><canvas id="cv" aria-label="Animated text preview"></canvas></div><div class="transport"><button class="btn" id="play">Pause</button><button class="btn" id="restart">Restart</button><span class="hint">Press K to play or pause.</span><span class="sp"></span><label><input type="checkbox" id="snd" checked> Sound</label><input id="vol" type="range" min="0" max="1" step="0.01" value="0.6" aria-label="Volume"><button class="btn rec" id="rec">Record</button></div></div>
+<div id="dock" data-tab="text"><div class="tabs" role="group" aria-label="Settings"><button data-t="text" aria-selected="true">Text</button><button data-t="motion" aria-selected="false">Motion</button><button data-t="style" aria-selected="false">Style</button><button data-t="audio" aria-selected="false">Audio</button><button data-t="export" aria-selected="false">Export</button></div>
+  <div class="row">
+    <input data-p="text" id="txt" type="text" value="Make it move" maxlength="120" placeholder="Type something…" aria-label="Your text">
+    
+    
+    
+  </div>
+  <div class="row" id="modes" data-p="motion" role="group" aria-label="Animation"></div>
+  <div class="row">
+    <label data-p="motion">Split by <select id="unit"><option value="letter">Letters</option><option value="word">Words</option></select></label>
+    <label data-p="motion" id="pathWrap" hidden>Path <select id="path"><option value="circle">Circle</option><option value="infinity">Infinity</option><option value="wave">Wave</option><option value="spiral">Spiral</option></select></label>
+    <div class="quick" data-p="text"><button>Hello</button><button>Happy birthday</button><button>Sale today</button><button>Good vibes</button><button>Welcome</button></div>
+    <label data-p="text">Font <select id="font" aria-label="Choose a font"></select></label>
+    <label data-p="motion">Speed <input id="speed" type="range" min="0.3" max="3" step="0.1" value="1"></label>
+    <label data-p="text">Size <input id="size" type="range" min="20" max="90" step="1" value="50"></label>
+  </div>
+  <div class="row">
+    <label data-p="style">Text color <span class="sw" id="colors"></span></label>
+    <label data-p="style">Backdrop <span class="sw" id="bgs"></span></label>
+  </div>
+  <div class="row">
+    
+    
+    
+    
+  </div>
+</div>
+</section>
+<section id="presets" class="wrap sec"><h2>Start from a preset</h2><p class="lead">Pick one to load it into the studio, then change anything you like.</p><div class="cards">
+<button class="card" data-d='{"text":"Hello there","mode":"bounce","font":0,"color":4,"bg":0}'><b>Hello there</b><span>Bounce</span></button>
+<button class="card" data-d='{"text":"Falling for you","mode":"fall","font":1,"color":2,"bg":2}'><b>Falling for you</b><span>Fall</span></button>
+<button class="card" data-d='{"text":"Fade away","mode":"dissolve","font":1,"color":0,"bg":1}'><b>Fade away</b><span>Dissolve</span></button>
+<button class="card" data-d='{"text":"Breaking news","mode":"typewriter","font":2,"color":2,"bg":0}'><b>Breaking news</b><span>Typewriter</span></button>
+<button class="card" data-d='{"text":"Glitch in the matrix","mode":"glitch","font":2,"color":4,"bg":0}'><b>Glitch in the matrix</b><span>Glitch</span></button>
+<button class="card" data-d='{"text":"Round and round","mode":"path","font":3,"color":4,"bg":2,"path":"circle"}'><b>Round and round</b><span>Path</span></button>
+</div></section>
+<section id="features" class="wrap sec"><h2>What’s inside</h2><div class="feat">
+<div><h3>Eight motions</h3><p>Bounce, rotate, fall, dissolve, wave, typewriter, glitch and path. Animate by letter or by word, and change speed and size at any time.</p></div>
+<div><h3>Your look</h3><p>Eight fonts, preset or custom colors, two-color gradients, and four backdrops, including a transparent one.</p></div>
+<div><h3>Sound</h3><p>Every motion has its own synthesized sound, tuned to a musical scale. Switch it off or set the volume.</p></div>
+<div><h3>Video export</h3><p>Record what you see, with sound, and save it as a WebM video.</p></div>
+</div></section>
+<footer class="wrap foot"><span>Kinetic: type it, move it, record it.</span><a href="#top">Back to top</a></footer>
+<div id="modal" hidden>
+  <div class="card">
+    <video id="vid" controls playsinline></video>
+    <div class="row"><a class="btn" id="dl" download="text-animation.webm">Download video</a><button class="btn" id="close">Close</button></div>
+  </div>
+</div>
+<script src="app.js" defer></script>
+</body>
+</html>
