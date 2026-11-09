@@ -125,7 +125,8 @@ function draw(t){
     let x=u.x,y=u.y,rot=0,sx=1,sy=1,al=1,blur=0,ev=0,cy=0,gl=0;
     switch(S.mode){
       case 'bounce':{const ph=t*2.6-i*.35,b=Math.abs(Math.sin(ph)),q=Math.pow(1-b,8);
-        ev=Math.floor(ph/Math.PI);y-=b*fs*.55;sy=1-.25*q;sx=1+.25*q;rot=Math.sin(ph)*.12;break}
+        // Keep the bounce balanced around each glyph's centered baseline.
+        ev=Math.floor(ph/Math.PI);y+=(.5-b)*fs*.55;sy=1-.25*q;sx=1+.25*q;rot=Math.sin(ph)*.12;break}
       case 'rotate':{const c=((t*.55-i*.08)%1+1)%1,k=clamp(c*1.5),e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
         ev=Math.floor(t*.55-i*.08);rot=e*Math.PI*2;sx=sy=1+.15*Math.sin(e*Math.PI);break}
       case 'fall':{const inT=tt-i*STG,outT=tt-outStart-i*outStg;cy=Math.floor(t/T);ev=(inT>.5?1:0)+(outT>0?1:0);
